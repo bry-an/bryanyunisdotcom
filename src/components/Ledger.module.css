@@ -1,0 +1,73 @@
+.ledger {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+.ledger > div {
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+  padding-block: 1rem;
+}
+
+.ledger > div + div {
+  border-top: 1px solid var(--rule);
+}
+
+.ledger dt {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ledger dd {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+/* Line icons: sparkle for AI's reach, balance scale for experienced judgment. */
+.icon {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.ai dt {
+  color: var(--accent);
+}
+
+.experience dt {
+  color: var(--ink);
+}
+
+@media (min-width: 40rem) {
+  .ledger {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ledger > div + div {
+    border-top: 0;
+    border-left: 1px solid var(--rule);
+    padding-left: 1.25rem;
+  }
+
+  .ledger > div:first-child {
+    padding-right: 1.25rem;
+  }
+}
+
+.lg {
+  font-size: 1rem;
+}
+
+.lg > div {
+  padding-block: 1.25rem;
+}

@@ -1,69 +1,176 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { Inline } from "@/lib/markdown";
+import {
+  aboutHref,
+  closingInvite,
+  historyIntro,
+  introduction,
+  rolesChronological,
+  signatureLine,
+  site,
+  thesis,
+} from "@/content/profile";
+import { WorkSpine } from "@/components/WorkSpine";
+import { ScaleIcon, SparkleIcon } from "@/components/LedgerIcons";
+import styles from "./home.module.css";
 
+/**
+ * Narrative: who (hero) → the idea (approach) → the evidence, told along the
+ * engineering lifecycle (work) → the depth it stands on (foundations) → the
+ * conclusion, in the site's signature line (closing).
+ */
 export default function Home() {
+  const [first, ...rest] = introduction;
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
+    <>
+      {/* ── Identity ─────────────────────────────────────────── */}
+      <section className={styles.hero} aria-labelledby="hero-title">
+        <div className="wrap grid">
+          <h1 id="hero-title" className={styles.name}>
+            {site.name}
           </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <div className={styles.heroLead}>
+            <p className={styles.role}><Inline text={site.role} /></p>
+            <p className={styles.tagline}><Inline text={site.tagline} /></p>
+            <p className={styles.heroAction}>
+              <a href="#featured-work" className={styles.primary}>
+                Explore featured work
+              </a>
+            </p>
+          </div>
+          <dl className={styles.facts}>
+            <div>
+              <dt>Currently</dt>
+              <dd>Technical lead, Customer Experience · Gateless</dd>
+            </div>
+            <div>
+              <dt>Experience</dt>
+              <dd>Eight years building systems that solve challenging business problems</dd>
+            </div>
+            <div>
+              <dt>Practice</dt>
+              <dd>Software architecture · Product engineering · AI-driven development</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="approach" className="section" aria-labelledby="approach-title">
+        <div className="wrap grid">
+          <header className={styles.sideHead}>
+            <h2 id="approach-title" className="section-title">
+              Approach
+            </h2>
+          </header>
+          <div className={styles.approachBody}>
+            <div className={`prose ${styles.approachProse}`}>
+              <p>
+                <Inline text={first} />
+              </p>
+              {rest.map((p, i) => (
+                <p key={i}>
+                  <Inline text={p} />
+                </p>
+              ))}
+            </div>
+          </div>
+
+          {/* The thesis, stated once, plainly. Everything below is evidence for it. */}
+          <figure className={styles.thesis}>
+            <p className={styles.thesisContrast}><Inline text={thesis.contrast} /></p>
+            <p className={styles.thesisClaim}><Inline text={thesis.claim} /></p>
+            <p className={styles.thesisCaveat}><Inline text={thesis.caveat} /></p>
+            <figcaption className={styles.thesisKey}>
+              <span className={styles.keyLine}>
+                <span className={styles.keyAi}>
+                  <SparkleIcon className={styles.keyIcon} />
+                  With AI
+                </span>{" "}
+                the reach to understand more.
+              </span>
+              <span className={styles.keyLine}>
+                <span className={styles.keyExperience}>
+                  <ScaleIcon className={styles.keyIcon} />
+                  With experience
+                </span>{" "}
+                the judgment to trust what it finds.
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      {/* ── Evidence ─────────────────────────────────────────── */}
+      <section id="featured-work" className="section" aria-labelledby="work-title">
+        <div className="wrap">
+          <header className={`section-head ${styles.workHead}`}>
+            <p className="eyebrow">Featured work · Gateless</p>
+            <h2 id="work-title" className="section-title">
+              From implementation to understanding
+            </h2>
+          </header>
+          <WorkSpine />
+        </div>
+      </section>
+
+      {/* ── Breadth: the depth it stands on ──────────────────── */}
+      <section id="foundations" className="section" aria-labelledby="foundations-title">
+        <div className="wrap">
+          <header className={`section-head ${styles.foundationsHead}`}>
+            <h2 id="foundations-title" className="eyebrow">
+              Engineering foundations
+            </h2>
+            <p className={styles.foundationsLede}><Inline text={historyIntro} /></p>
+          </header>
+
+          <ol className={styles.progression}>
+            {rolesChronological().map((r, i) => (
+              <li key={r.id} className={styles.stepItem}>
+                <p className={styles.step}>
+                  <span className={styles.stepNum}>{["I", "II", "III"][i]}</span>
+                  <Inline text={r.step} />
+                </p>
+                <p className={styles.company}>{r.company}</p>
+                <h3 className={styles.roleTitle}>
+                  <Link href={aboutHref(r.id)} className="title-link">
+                    <Inline text={r.title} />
+                  </Link>
+                </h3>
+                <p className={styles.roleBrief}><Inline text={r.brief} /></p>
+              </li>
+            ))}
+          </ol>
+          <p className={styles.fullStory}>
+            <Link href="/about/" className="arrow-link">
+              The full story
+            </Link>
           </p>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* ── Conclusion ───────────────────────────────────────── */}
+      <section className={`section ${styles.closing}`} aria-labelledby="closing-title">
+        <div className="wrap">
+          <h2 id="closing-title" className="visually-hidden">
+            In summary
+          </h2>
+          <blockquote className={styles.signature}>
+            <p><Inline text={signatureLine} /></p>
+          </blockquote>
+          <div className={styles.invite}>
+            <p><Inline text={closingInvite} /></p>
+            <p className={styles.inviteActions}>
+              <Link href="/about/#contact" className={styles.primaryStatic}>
+                Get in touch
+              </Link>
+              <a href={site.linkedin} rel="me noopener" target="_blank" className="arrow-link">
+                LinkedIn<span className="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </p>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }

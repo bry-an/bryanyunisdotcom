@@ -1,0 +1,407 @@
+/* ── Hero ─────────────────────────────────────────────────── */
+.hero {
+  padding-block: clamp(4rem, 12vw, 9rem) clamp(4rem, 9vw, 7rem);
+}
+
+.hero :global(.grid) {
+  row-gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.name {
+  grid-column: 1 / -1;
+  font-family: var(--font-serif);
+  font-size: var(--step-5);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+}
+
+.heroLead {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+}
+
+.role {
+  font-family: var(--font-sans);
+  font-size: var(--step-2);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.role::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin-bottom: 1.1rem;
+  background: var(--ink);
+}
+
+.tagline {
+  font-size: var(--step-1);
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 30ch;
+}
+
+.heroAction {
+  margin-top: 1.25rem;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.85rem 1.35rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background-color 160ms ease;
+}
+
+.primary::after {
+  content: "↓";
+  transition: transform 180ms ease;
+}
+
+.primary:hover {
+  background: var(--accent);
+}
+
+.primary:hover::after {
+  transform: translateY(2px);
+}
+
+.facts {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 1.1rem;
+  margin: 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  align-content: start;
+}
+
+.facts div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.facts dt {
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.facts dd {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+@media (min-width: 56rem) {
+  .heroLead {
+    grid-column: 1 / span 7;
+  }
+
+  .facts {
+    grid-column: 9 / -1;
+    padding-top: 0;
+    padding-left: 1.5rem;
+    border-top: 0;
+    border-left: 1px solid var(--rule);
+  }
+}
+
+/* ── Two-part section layout: heading left, body right ───── */
+.sideHead {
+  grid-column: 1 / -1;
+  margin-bottom: 2rem;
+}
+
+.approachBody,
+.foundationsBody {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+@media (min-width: 56rem) {
+  .sideHead {
+    grid-column: 1 / span 4;
+    margin-bottom: 0;
+  }
+
+  .approachBody,
+  .foundationsBody {
+    grid-column: 5 / -1;
+  }
+}
+
+.approachProse p:first-child {
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ── Thesis ───────────────────────────────────────────────── */
+.thesis {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 1.25rem;
+  margin: clamp(3.5rem, 8vw, 6rem) 0 0;
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.thesisContrast {
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+.thesisClaim {
+  font-family: var(--font-serif);
+  font-size: var(--step-3);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  max-width: 28ch;
+}
+
+.thesisCaveat {
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 46ch;
+}
+
+.thesisKey {
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.93rem;
+  color: var(--ink-2);
+  max-width: 62ch;
+}
+
+.thesisKey {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.keyLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.keyAi,
+.keyExperience {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.keyIcon {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.keyAi {
+  color: var(--accent);
+}
+
+.keyExperience {
+  color: var(--ink);
+}
+
+@media (min-width: 56rem) {
+  .thesis {
+    grid-column: 5 / -1;
+  }
+}
+
+/* ── Work ─────────────────────────────────────────────────── */
+.workHead {
+  max-width: 48rem;
+}
+
+/* ── Foundations ──────────────────────────────────────────── */
+.foundationsHead {
+  max-width: 52rem;
+}
+
+.foundationsLede {
+  font-family: var(--font-serif);
+  font-size: var(--step-3);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.progression {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule-strong);
+}
+
+.stepItem {
+  display: grid;
+  gap: 0.55rem;
+  align-content: start;
+  padding-block: 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.step {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--step-1);
+  line-height: 1.25;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.stepNum {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  flex: none;
+}
+
+.company {
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.roleTitle {
+  font-family: var(--font-serif);
+  font-size: var(--step-2);
+  line-height: 1.1;
+}
+
+.roleBrief {
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 60rem) {
+  .progression {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .stepItem {
+    padding: 2rem 2rem 0 0;
+    border-bottom: 0;
+  }
+
+  .stepItem + .stepItem {
+    padding-left: 2rem;
+    border-left: 1px solid var(--rule);
+  }
+
+  /* Arrow between steps: the progression reads forward. */
+  .stepItem {
+    position: relative;
+  }
+
+  .stepItem + .stepItem::before {
+    content: "→";
+    position: absolute;
+    top: 1.95rem;
+    left: -0.65rem;
+    padding-block: 0.15rem;
+    line-height: 1;
+    color: var(--muted);
+    background: var(--bg);
+  }
+}
+
+.fullStory {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* ── Closing ──────────────────────────────────────────────── */
+.closing {
+  padding-block: clamp(5rem, 11vw, 9rem);
+}
+
+.signature {
+  margin: 0;
+}
+
+.signature p {
+  font-family: var(--font-serif);
+  font-size: var(--step-5);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+
+.signature p::before {
+  content: "\201C";
+  color: var(--accent);
+}
+
+.signature p::after {
+  content: "\201D";
+  color: var(--accent);
+}
+
+.invite {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  max-width: 40rem;
+}
+
+.invite > p:first-child {
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.inviteActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.75rem;
+}
+
+.primaryStatic {
+  display: inline-flex;
+  padding: 0.85rem 1.35rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background-color 160ms ease;
+}
+
+.primaryStatic:hover {
+  background: var(--accent);
+}

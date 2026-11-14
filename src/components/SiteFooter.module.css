@@ -1,0 +1,62 @@
+.footer {
+  border-top: 1px solid var(--rule);
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+  font-size: 0.95rem;
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem 3rem;
+}
+
+.sign {
+  display: grid;
+  gap: 0.15rem;
+  align-self: start;
+  max-width: 26rem;
+}
+
+.signature {
+  margin-top: 1rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: var(--ink-2);
+}
+
+.sign :global(.serif) {
+  font-size: 1.6rem;
+  line-height: 1.1;
+}
+
+.role {
+  color: var(--muted);
+}
+
+.cols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 3.5rem;
+}
+
+.cols ul {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cols a {
+  color: var(--ink-2);
+  text-decoration-color: transparent;
+}
+
+.cols a:hover,
+.cols a:focus-visible {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}

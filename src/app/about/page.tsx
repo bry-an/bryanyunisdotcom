@@ -1,0 +1,122 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import {
+  foundationsHeading,
+  historyIntro,
+  introduction,
+  rolesChronological,
+  signatureLine,
+  site,
+} from "@/content/profile";
+import { Topics } from "@/components/Topics";
+import { projectHref, projectsInReadingOrder } from "@/content/projects";
+import Link from "next/link";
+import { Inline } from "@/lib/markdown";
+import { ContactForm } from "@/components/ContactForm";
+import headshot from "@/assets/headshot.jpg";
+import styles from "../pages.module.css";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Bryan Yunis: eight years building systems that solve challenging business problems, from enterprise integration at OppenheimerFunds and platform engineering at RE/MAX to distributed expert systems at Gateless.",
+  alternates: { canonical: "/about/" },
+  openGraph: { url: "/about/" },
+};
+
+export default function About() {
+  return (
+    <div className="wrap">
+      <header className={styles.aboutHead}>
+        <div className={styles.aboutIntro}>
+          <h1 className={styles.pageTitle}>About</h1>
+          <p className={styles.aboutRole}>
+            <span className="serif"><Inline text={site.role} /></span> <Inline text={site.tagline} />
+          </p>
+          <div className="prose">
+            {introduction.map((p, i) => (
+              <p key={i}>
+                <Inline text={p} />
+              </p>
+            ))}
+          </div>
+        </div>
+        <figure className={styles.portrait}>
+          <Image
+            src={headshot}
+            alt="Portrait of Bryan Yunis"
+            sizes="(min-width: 56rem) 18rem, 12rem"
+            placeholder="blur"
+            priority
+          />
+        </figure>
+      </header>
+
+      <section className={styles.block} aria-labelledby="foundations">
+        <p className="eyebrow">Engineering foundations</p>
+        <h2 id="foundations" className={styles.aboutSectionTitle}>
+          <Inline text={foundationsHeading} />
+        </h2>
+        <div className={`prose ${styles.aboutLede}`}>
+          <p><Inline text={historyIntro} /></p>
+        </div>
+
+        {rolesChronological().map((r, i) => (
+          <section key={r.id} id={r.id} className={styles.roleSection} aria-labelledby={`${r.id}-title`}>
+            <div className={styles.roleMeta}>
+              <p className={styles.roleStep}>
+                <span>{["I", "II", "III"][i]}</span> <Inline text={r.step} />
+              </p>
+              <p className={styles.roleCompany}>{r.company}</p>
+              <Topics items={r.labels} label="Focus" />
+            </div>
+            <div className="prose">
+              <h3 id={`${r.id}-title`} className={styles.roleTitle}>
+                <Inline text={r.title} />
+              </h3>
+              {r.body.map((p, j) => (
+                <p key={j}>{p}</p>
+              ))}
+              {r.id === "gateless" && (
+                <div className={styles.roleWork}>
+                  <p className="eyebrow">Selected work at Gateless</p>
+                  <ul>
+                    {projectsInReadingOrder().map((p) => (
+                      <li key={p.slug}>
+                        <Link href={projectHref(p.slug)} prefetch>
+                          <Inline text={p.title} />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </section>
+        ))}
+      </section>
+
+      <blockquote className={styles.aboutSignature}>
+        <p><Inline text={signatureLine} /></p>
+      </blockquote>
+
+      <section id="contact" className={styles.block} aria-labelledby="contact-title">
+        <div className={styles.contact}>
+          <div>
+            <h2 id="contact-title" className={styles.aboutSectionTitle}>
+              Contact
+            </h2>
+            <p className={styles.contactLede}>
+              Send a note here, or find me on{" "}
+              <a href={site.linkedin} rel="me noopener" target="_blank">
+                LinkedIn<span className="visually-hidden"> (opens in a new tab)</span>
+              </a>
+              .
+            </p>
+          </div>
+          <ContactForm />
+        </div>
+      </section>
+    </div>
+  );
+}
