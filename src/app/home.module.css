@@ -121,6 +121,59 @@
   }
 }
 
+/* ── Strengths ────────────────────────────────────────────── */
+.strengths {
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid var(--rule);
+}
+
+.strengthList {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.strength {
+  font-family: var(--font-serif);
+  font-size: var(--step-2);
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  padding-block: 1.25rem;
+  text-wrap: balance;
+}
+
+.strength + .strength {
+  border-top: 1px solid var(--rule);
+}
+
+.strengthLead {
+  color: var(--accent);
+}
+
+.strengthKey {
+  color: var(--ink);
+}
+
+@media (min-width: 52rem) {
+  .strengthList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .strength {
+    padding: 0.25rem clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .strength:first-child {
+    padding-left: 0;
+  }
+
+  .strength + .strength {
+    border-top: 0;
+    border-left: 1px solid var(--rule);
+  }
+}
+
 /* ── Two-part section layout: heading left, body right ───── */
 .sideHead {
   grid-column: 1 / -1;

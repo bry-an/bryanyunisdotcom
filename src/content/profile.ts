@@ -14,6 +14,16 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/bryan-yunis/",
 };
 
+/**
+ * Three strengths, featured directly under the hero: systems, vision, leadership.
+ * `lead` is set softer; `key` carries the emphasis. Each pair reads as one sentence.
+ */
+export const strengths: { lead: string; key: string }[] = [
+  { lead: "An instinct for", key: "untangling complexity." },
+  { lead: "A talent for", key: "seeing what's possible." },
+  { lead: "The ability to", key: "bring people together to make it happen." },
+];
+
 export const signatureLine =
   "AI doesn't just help me build more. It helps me understand more, and build better.";
 

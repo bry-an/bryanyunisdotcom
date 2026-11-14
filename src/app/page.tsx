@@ -8,6 +8,7 @@ import {
   rolesChronological,
   signatureLine,
   site,
+  strengths,
   thesis,
 } from "@/content/profile";
 import { WorkSpine } from "@/components/WorkSpine";
@@ -46,13 +47,34 @@ export default function Home() {
             </div>
             <div>
               <dt>Experience</dt>
-              <dd>Eight years building systems that solve challenging business problems</dd>
+              <dd>
+                Eight years: full-stack engineer turned technical lead, across a platform built on
+                thousands of interconnected business rules
+              </dd>
             </div>
             <div>
               <dt>Practice</dt>
               <dd>Software architecture · Product engineering · AI-driven development</dd>
             </div>
           </dl>
+        </div>
+      </section>
+
+      {/* Three strengths: systems, vision, leadership. */}
+      <section className={styles.strengths} aria-label="Strengths">
+        <div className="wrap">
+          <ul className={styles.strengthList}>
+            {strengths.map((s) => (
+              <li key={s.key} className={styles.strength}>
+                <span className={styles.strengthLead}>
+                  <Inline text={s.lead} />
+                </span>{" "}
+                <span className={styles.strengthKey}>
+                  <Inline text={s.key} />
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
