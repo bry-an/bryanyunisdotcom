@@ -42,7 +42,7 @@ export default function Home() {
           <dl className={styles.facts}>
             <div>
               <dt>Currently</dt>
-              <dd>Technical lead, Customer Experience · Gateless</dd>
+              <dd>Technical Lead, Customer Experience · Gateless</dd>
             </div>
             <div>
               <dt>Experience</dt>
