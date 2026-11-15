@@ -60,24 +60,24 @@ This allowed us to surface important questions to our integration partner early,
       "Identified incompatibilities and ambiguous scenarios that happy-path testing could easily overlook, and surfaced them to the integration partner before they became production problems.",
   },
   {
-    slug: "deterministic-incident-analysis",
+    slug: "deterministic-production-analysis",
     sourceNumber: 2,
-    title: "Turning an opaque production incident into actionable evidence",
-    subtitle: "Identifying the full impact of unexpected production behavior",
-    topics: ["Incident response", "Deterministic analysis", "Customer impact"],
+    title: "Answering a hard production question with deterministic evidence",
+    subtitle: "Establishing the full scope of unexpected production behavior",
+    topics: ["Production analysis", "Deterministic analysis", "Customer transparency"],
     summary:
-      "AI accelerated development of the analysis script. Deterministic detection made the investigation repeatable and supported a comprehensive account of customer impact.",
-    body: `When unexpected behavior emerged in one of our products, existing observability tools couldn't identify the full population of affected cases.
+      "AI accelerated development of the analysis script. Deterministic detection made the investigation repeatable and supported a complete, accurate account for the customer.",
+    body: `When a product behaved unexpectedly, we needed to know exactly which cases were involved, and existing observability tools couldn't give us a complete answer.
 
-I used AI to rapidly develop a deterministic analysis script capable of detecting the anomalous behavior across production data.
+I used AI to rapidly develop a deterministic analysis script that could detect the behavior across production data.
 
-This transformed an otherwise difficult investigation into a repeatable, evidence-driven process. We could identify affected cases systematically and provide the customer with a comprehensive understanding of the incident's impact.
+That turned a difficult investigation into a repeatable, evidence-driven process. We could identify every relevant case systematically and give the customer a complete, accurate account.
 
 The AI accelerated development of the analysis. Deterministic logic provided the repeatability and confidence required to act on its findings.`,
     placement: { kind: "featured", priority: 3, role: "supporting" },
     stages: ["production"],
     withAI:
-      "Accelerated development of an analysis script capable of detecting the anomalous behavior across production data.",
+      "Accelerated development of an analysis script that could detect the behavior across production data.",
     withExperience:
       "Built the detection to be deterministic, which provided the repeatability and confidence required to act on its findings.",
   },
