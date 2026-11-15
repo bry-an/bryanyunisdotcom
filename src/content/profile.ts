@@ -4,6 +4,8 @@
  * Editorial planning notes in history.md (e.g. "establish architectural depth") stay in the source.
  */
 
+export const gateless = { name: "Gateless", url: "https://gateless.com/" };
+
 export const site = {
   name: "Bryan Yunis",
   url: "https://bryanyunis.com",
@@ -41,7 +43,7 @@ export const introduction: string[] = [
  * its closing line is the signature (in the footer), so both are left out here.
  */
 export const aboutIntroduction: string[] = [
-  "I’m a software engineer and technical lead working across architecture, product engineering, and AI-assisted development. At Gateless, I lead engineering work across a mortgage underwriting platform that spans customer-facing applications, distributed services, financial integrations, and an expert system with thousands of interconnected business rules.",
+  "I’m a software engineer and technical lead working across architecture, product engineering, and AI-assisted development. At [Gateless](https://gateless.com/), I lead engineering work across a mortgage underwriting platform that spans customer-facing applications, distributed services, financial integrations, and an expert system with thousands of interconnected business rules.",
   "I take ownership of product outcomes, from clarifying what we need to solve to verifying that the solution works under realistic conditions. That can mean finding gaps between a partner’s requirements and our data model, reproducing complex underwriting behavior before deployment, or using deterministic analysis to establish the full customer impact of a production incident.",
   "My earlier work at RE/MAX and OppenheimerFunds shaped that approach. I led the development of a shared content-rendering service and helped turn a fragmented employee provisioning process into a single workflow that could be completed in minutes.",
   "AI extends the reach of that engineering experience. It helps me trace unfamiliar systems, explore edge cases, and see how a decision in one part of a platform will affect another. I use that understanding to ask better questions, verify changes more thoroughly, and make better technical decisions.",
@@ -74,6 +76,8 @@ export type Role = {
   /** Where this role sits in the career progression described in history.md. */
   step: string;
   company: string;
+  /** Linked wherever the company name appears. */
+  companyUrl?: string;
   title: string;
   labels: string[];
   /** Brief homepage entry, drawn from the history narrative. */
@@ -94,7 +98,7 @@ export const roles: Role[] = [
       "Customer-facing applications built with Svelte, backend services written in Clojure, asynchronous processing workflows, external integrations, testing infrastructure, and a distributed expert system that evaluates mortgage loan data against thousands of business rules.",
     body: [
       "Mortgage underwriting involves complex financial calculations, interconnected business rules, document requirements, and integrations with external financial systems.",
-      "At Gateless, I've contributed to the architecture and development of a platform designed to automate and streamline this process.",
+      "At [Gateless](https://gateless.com/), I've contributed to the architecture and development of a platform designed to automate and streamline this process.",
       "My work spans customer-facing applications built with Svelte, backend services written in Clojure, and a distributed expert system responsible for evaluating mortgage loan data against thousands of business rules.",
       "I've helped design, implement, and maintain the systems connecting these components, including asynchronous processing workflows, external integrations, and the testing infrastructure necessary to support reliable operation.",
       "This experience has given me a deep understanding of how to build software in a regulated domain where correctness, traceability, and operational reliability are fundamental requirements.",

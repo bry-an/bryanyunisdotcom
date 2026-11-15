@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import headshot from "@/assets/headshot.jpg";
-import { site } from "@/content/profile";
+import { gateless, site } from "@/content/profile";
 import { plain } from "@/lib/markdown";
 
 /**
@@ -36,7 +36,7 @@ export const personLd = {
   image: abs(headshot.src),
   description: plain(site.description),
   jobTitle: "Technical Lead, Customer Experience",
-  worksFor: { "@type": "Organization", name: "Gateless" },
+  worksFor: { "@type": "Organization", name: gateless.name, url: gateless.url },
   sameAs: [site.linkedin],
   knowsAbout: [
     "Software architecture",

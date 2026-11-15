@@ -134,7 +134,7 @@ Rather than delivering another data-dense static report, I delivered an interact
     topics: ["Technical leadership", "Systems architecture", "AI-native workflows"],
     summary:
       "Instead of treating unfamiliar components as black boxes, I can understand the consequences of proposed changes across the platform, identify cross-system risks earlier, and make better-informed architectural and product decisions.",
-    body: `As a technical lead on Gateless's full-stack Customer Experience team, I work across a platform that spans customer-facing applications, RESTful services, distributed processing, document extraction, financial data integrations, and a large-scale underwriting expert system.
+    body: `As a technical lead on [Gateless](https://gateless.com/)'s full-stack Customer Experience team, I work across a platform that spans customer-facing applications, RESTful services, distributed processing, document extraction, financial data integrations, and a large-scale underwriting expert system.
 
 AI has fundamentally expanded my ability to reason across these systems.
 

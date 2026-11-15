@@ -3,6 +3,7 @@ import { Inline } from "@/lib/markdown";
 import {
   aboutHref,
   closingInvite,
+  gateless,
   historyIntro,
   introduction,
   rolesChronological,
@@ -13,6 +14,7 @@ import {
 } from "@/content/profile";
 import { WorkSpine } from "@/components/WorkSpine";
 import { JsonLd } from "@/components/JsonLd";
+import { ExternalLink } from "@/components/ExternalLink";
 import { personLd, websiteLd } from "@/lib/seo";
 import { ScaleIcon, SparkleIcon } from "@/components/LedgerIcons";
 import styles from "./home.module.css";
@@ -46,7 +48,10 @@ export default function Home() {
           <dl className={styles.facts}>
             <div>
               <dt>Currently</dt>
-              <dd>Technical Lead, Customer Experience · Gateless</dd>
+              <dd>
+                Technical Lead, Customer Experience ·{" "}
+                <ExternalLink href={gateless.url}>{gateless.name}</ExternalLink>
+              </dd>
             </div>
             <div>
               <dt>Experience</dt>
@@ -130,7 +135,9 @@ export default function Home() {
       <section id="featured-work" className="section" aria-labelledby="work-title">
         <div className="wrap">
           <header className={`section-head ${styles.workHead}`}>
-            <p className="eyebrow">Featured work · Gateless</p>
+            <p className="eyebrow">
+              Featured work · <ExternalLink href={gateless.url}>{gateless.name}</ExternalLink>
+            </p>
             <h2 id="work-title" className="section-title">
               From implementation to understanding
             </h2>
@@ -156,7 +163,9 @@ export default function Home() {
                   <span className={styles.stepNum}>{["I", "II", "III"][i]}</span>
                   <Inline text={r.step} />
                 </p>
-                <p className={styles.company}>{r.company}</p>
+                <p className={styles.company}>
+                  {r.companyUrl ? <ExternalLink href={r.companyUrl}>{r.company}</ExternalLink> : r.company}
+                </p>
                 <h3 className={styles.roleTitle}>
                   <Link href={aboutHref(r.id)} className="title-link">
                     <Inline text={r.title} />

@@ -1,8 +1,19 @@
 import { Fragment, type ReactNode } from "react";
+import { ExternalLink } from "@/components/ExternalLink";
 
-/** Inline: **strong** and *emphasis* — all the copy needs. */
+const LINK = /^\[([^\]]+)\]\(([^)\s]+)\)$/;
+
+/** Inline: **strong**, *emphasis* and [text](https://…) links — all the copy needs. */
 function inline(text: string): ReactNode[] {
-  return text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).map((part, i) => {
+  return text.split(/(\[[^\]]+\]\([^)\s]+\)|\*\*[^*]+\*\*|\*[^*]+\*)/g).map((part, i) => {
+    const link = part.match(LINK);
+    if (link) {
+      return (
+        <ExternalLink key={i} href={link[2]}>
+          {inline(link[1])}
+        </ExternalLink>
+      );
+    }
     if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
     }
@@ -15,7 +26,9 @@ function inline(text: string): ReactNode[] {
 
 /** Strips inline Markdown markers, for plain-text contexts (titles, meta, aria). */
 export function plain(text: string) {
-  return text.replace(/\*\*([^*]+)\*\*/g, "$1").replace(/\*([^*]+)\*/g, "$1");
+  return text
+    .replace(/\[([^\]]+)\]\([^)\s]+\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1").replace(/\*([^*]+)\*/g, "$1");
 }
 
 /** Renders a single line of inline Markdown. */

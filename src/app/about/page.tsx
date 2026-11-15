@@ -4,6 +4,7 @@ import {
   foundationsHeading,
   historyIntro,
   aboutIntroduction,
+  gateless,
   moreAboutMe,
   rolesChronological,
   site,
@@ -16,6 +17,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { PianoKeys } from "@/components/PianoKeys";
 import headshot from "@/assets/headshot.jpg";
 import { JsonLd } from "@/components/JsonLd";
+import { ExternalLink } from "@/components/ExternalLink";
 import { abs, baseOpenGraph, ids, personLd, websiteLd } from "@/lib/seo";
 import styles from "../pages.module.css";
 
@@ -84,7 +86,9 @@ export default function About() {
               <p className={styles.roleStep}>
                 <span>{["I", "II", "III"][i]}</span> <Inline text={r.step} />
               </p>
-              <p className={styles.roleCompany}>{r.company}</p>
+              <p className={styles.roleCompany}>
+                {r.companyUrl ? <ExternalLink href={r.companyUrl}>{r.company}</ExternalLink> : r.company}
+              </p>
               <Topics items={r.labels} label="Focus" />
             </div>
             <div className="prose">
@@ -92,11 +96,15 @@ export default function About() {
                 <Inline text={r.title} />
               </h3>
               {r.body.map((p, j) => (
-                <p key={j}>{p}</p>
+                <p key={j}>
+                  <Inline text={p} />
+                </p>
               ))}
               {r.id === "gateless" && (
                 <div className={styles.roleWork}>
-                  <p className="eyebrow">Selected work at Gateless</p>
+                  <p className="eyebrow">
+                    Selected work at <ExternalLink href={gateless.url}>{gateless.name}</ExternalLink>
+                  </p>
                   <ul>
                     {projectsInReadingOrder().map((p) => (
                       <li key={p.slug}>
