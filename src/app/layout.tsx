@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { themeScript } from "@/lib/theme";
+import { SYSTEM_SCHEME, themeScript } from "@/lib/theme";
 import { site } from "@/content/profile";
 import { plain } from "@/lib/markdown";
 import { baseOpenGraph } from "@/lib/seo";
@@ -52,6 +52,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       suppressHydrationWarning
     >
       <head>
+        {/* Theme override lives here; the script right after it restores a saved choice. */}
+        <meta name="color-scheme" content={SYSTEM_SCHEME} />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>

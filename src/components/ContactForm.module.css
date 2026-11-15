@@ -1,3 +1,9 @@
+.wrap {
+  display: grid;
+  gap: 1rem;
+  max-width: 36rem;
+}
+
 .form {
   display: grid;
   gap: 1.25rem;
@@ -37,7 +43,8 @@
   border-color: transparent;
 }
 
-.field [aria-invalid] {
+/* :user-invalid covers the no-JS case; aria-invalid carries server-side errors too. */
+.field :is(input, textarea):is(:user-invalid, [aria-invalid="true"]) {
   border-color: var(--accent);
 }
 

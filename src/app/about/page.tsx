@@ -66,7 +66,8 @@ export default function About() {
             alt="Portrait of Bryan Yunis"
             sizes="(min-width: 56rem) 18rem, 12rem"
             placeholder="blur"
-            priority
+            loading="eager"
+            fetchPriority="high"
           />
         </figure>
       </header>

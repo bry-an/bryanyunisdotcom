@@ -87,6 +87,14 @@
   background: var(--accent);
 }
 
+/* Forced Colors drops author backgrounds; keep the current-page bar visible. */
+@media (forced-colors: active) {
+  .navLink[aria-current]::after {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+}
+
 .end {
   display: flex;
   align-items: center;
@@ -113,6 +121,7 @@
 }
 
 .themeToggle svg {
+  display: block;
   width: 1.1rem;
   height: 1.1rem;
   fill: none;

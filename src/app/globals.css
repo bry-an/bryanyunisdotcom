@@ -38,12 +38,18 @@
   --step-4: clamp(2.75rem, 1.8rem + 4vw, 5.25rem);
   --step-5: clamp(3.25rem, 2rem + 6vw, 7.5rem);
 
-  color-scheme: light;
+  /* Base must stay "light dark"; a visitor's override pins it below. */
+  color-scheme: light dark;
 }
 
-/* Dark: follows the system unless the visitor picked a theme (data-theme on <html>). */
+/*
+ * Dark: follows the system unless the visitor pinned a scheme. The toggle writes
+ * the override to <meta name="color-scheme"> ("light" | "dark" | "light dark"),
+ * which the selectors below map back onto the cascade. Without JS the meta stays
+ * "light dark" and the site simply follows the system.
+ */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not(:has(> head > meta[name="color-scheme"][content="light"])) {
     --bg: #161411;
     --bg-raised: #1f1c18;
     --ink: #efe8dc;
@@ -58,11 +64,10 @@
     --key-gap: #efe8dc;
     --show-moon: none;
     --show-sun: block;
-    color-scheme: dark;
   }
 }
 
-:root[data-theme="dark"] {
+:root:has(> head > meta[name="color-scheme"][content="dark"]) {
   --bg: #161411;
   --bg-raised: #1f1c18;
   --ink: #efe8dc;
@@ -78,6 +83,10 @@
   --show-moon: none;
   --show-sun: block;
   color-scheme: dark;
+}
+
+:root:has(> head > meta[name="color-scheme"][content="light"]) {
+  color-scheme: light;
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -164,16 +173,17 @@ a:hover {
   color: var(--ink);
 }
 
-.visually-hidden {
+/* Hidden visually, kept in the accessibility tree. */
+.visually-hidden:where(:not(:focus-within, :active)) {
   position: absolute !important;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
 }
 
 /* ──────────────────────────────────────────────────────────────
