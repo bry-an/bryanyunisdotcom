@@ -93,6 +93,12 @@
   max-width: 60ch;
 }
 
+/* "Use case:" lead-in, in the accent. */
+.useCase {
+  font-weight: 500;
+  color: var(--accent);
+}
+
 /* One title size for every case, a step below its stage heading (.line). */
 .featureTitle,
 .compactTitle {

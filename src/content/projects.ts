@@ -142,7 +142,7 @@ Instead of treating unfamiliar components as black boxes, I can investigate thei
 
 This allows me to make better-informed architectural and product decisions, identify cross-system risks earlier, and lead engineering efforts with a more comprehensive understanding of the platform.
 
-For me, one of AI's most important contributions to engineering leadership is reducing the distance between the systems we're responsible for and the systems we deeply understand.`,
+For me, one of AI's most important contributions to engineering leadership is narrowing the gap between what we're responsible for and what we deeply understand.`,
     placement: { kind: "breadth", priority: 2 },
     stages: ["organization"],
     withAI:
@@ -150,7 +150,7 @@ For me, one of AI's most important contributions to engineering leadership is re
     withExperience:
       "Technical leadership across a platform that spans customer-facing applications, distributed processing, financial data integrations, and a large-scale underwriting expert system.",
     pullQuote:
-      "One of AI's most important contributions to engineering leadership is reducing the distance between the systems we're responsible for and the systems we deeply understand.",
+      "One of AI's most important contributions to engineering leadership is narrowing the gap between what we're responsible for and what we deeply understand.",
   },
 ];
 

@@ -54,6 +54,15 @@ function ReadLink({ project }: { project: Project }) {
   );
 }
 
+/** The case in a sentence, introduced so the reader knows what they're reading. */
+function Summary({ project }: { project: Project }) {
+  return (
+    <p className={styles.summary}>
+      <span className={styles.useCase}>Use case:</span> <Inline text={project.summary} />
+    </p>
+  );
+}
+
 function Title({ project, className }: { project: Project; className: string }) {
   return (
     <h4 id={`w-${project.slug}`} className={className}>
@@ -72,7 +81,7 @@ function HomeItem({ project }: { project: Project }) {
       <article className={`${styles.item} ${styles.feature}`} aria-labelledby={`w-${project.slug}`}>
         <Topics items={project.topics} />
         <Title project={project} className={styles.featureTitle} />
-        <p className={styles.summary}><Inline text={project.summary} /></p>
+        <Summary project={project} />
         <Ledger project={project} />
         <ReadLink project={project} />
       </article>
@@ -83,7 +92,7 @@ function HomeItem({ project }: { project: Project }) {
     <article className={`${styles.item} ${styles.compact}`} aria-labelledby={`w-${project.slug}`}>
       <Topics items={project.topics} />
       <Title project={project} className={styles.compactTitle} />
-      <p className={styles.summary}><Inline text={project.summary} /></p>
+      <Summary project={project} />
       {project.pullQuote && (
         <blockquote className={styles.pull}>
           <p><Inline text={project.pullQuote} /></p>
