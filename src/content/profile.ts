@@ -93,7 +93,7 @@ export const roles: Role[] = [
     step: "Architecting complex distributed systems, then leading engineers and owning product outcomes",
     company: "Gateless",
     title: "Engineering intelligent mortgage underwriting",
-    labels: ["Full-stack engineering", "Distributed systems", "Expert systems"],
+    labels: ["Full-stack engineering", "Distributed systems", "Expert systems", "Event-driven architecture", "Regulated systems", "Technical leadership"],
     brief:
       "Customer-facing applications built with Svelte, backend services written in Clojure, asynchronous processing workflows, external integrations, testing infrastructure, and a distributed expert system that evaluates mortgage loan data against thousands of business rules.",
     body: [
@@ -110,7 +110,7 @@ export const roles: Role[] = [
     step: "Designing reusable platforms and engineering practices",
     company: "RE/MAX",
     title: "Building composable content infrastructure",
-    labels: ["Platform engineering", "Node.js", "TypeScript", "Vue"],
+    labels: ["Platform engineering", "Node.js", "TypeScript", "Vue", "Test infrastructure"],
     brief:
       "Led development of a headless Node.js and TypeScript service that rendered Vue components into email-compatible HTML for multiple applications, and helped establish the testing practices that supported the wider frontend organization.",
     body: [
