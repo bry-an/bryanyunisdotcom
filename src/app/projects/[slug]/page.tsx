@@ -47,8 +47,8 @@ export default function ProjectPage({ params }: PageProps<"/projects/[slug]">) {
   return (
     <article className="wrap">
       <p className={styles.back}>
-        <Link href="/projects/">
-          <span aria-hidden="true">← </span>All projects
+        <Link href="/#featured-work">
+          <span aria-hidden="true">← </span>Featured work
         </Link>
       </p>
       <Suspense fallback={<div className={styles.caseFallback} aria-busy="true" />}>

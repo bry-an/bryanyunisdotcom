@@ -14,7 +14,7 @@ Wording is sourced from `../copy/` (`layout.md` is the spec). Structured records
 
 - `src/content/projects.ts`: one record per case study (slug, source number, title, subtitle,
   topics, summary, Markdown body, placement, stages). Featured priority is stored separately from
-  source order. Homepage, `/projects/` and `/projects/<slug>/` all render from these records.
+  source order. The homepage and `/projects/<slug>/` render from these records.
 - `src/content/profile.ts`: hero, approach, signature line, history and roles (About anchors:
   `#gateless`, `#remax`, `#oppenheimerfunds`, `#contact`).
 

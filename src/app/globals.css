@@ -10,9 +10,15 @@
   --muted: #6a6257; /* metadata — 5.4:1 on --bg */
   --rule: #d5cbba;
   --rule-strong: #b9ad99;
-  --accent: #8a3a1c; /* 7.0:1 on --bg */
-  --accent-soft: #e6d2c2;
-  --focus: #8a3a1c;
+  --accent: #b8461b; /* 4.7:1 on --bg (AA) */
+  --accent-soft: #f0d5c4;
+  --focus: #b8461b;
+  /* Piano keys: background-colored keys; black outlines (light), off-white outlines (dark). */
+  --key-white: var(--bg);
+  --key-gap: var(--ink);
+  /* Theme toggle shows the mode you'd switch to. */
+  --show-moon: block;
+  --show-sun: none;
 
   --font-serif: var(--font-instrument-serif), "Iowan Old Style", "Palatino Linotype", Palatino,
     Georgia, serif;
@@ -35,8 +41,9 @@
   color-scheme: light;
 }
 
+/* Dark: follows the system unless the visitor picked a theme (data-theme on <html>). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #161411;
     --bg-raised: #1f1c18;
     --ink: #efe8dc;
@@ -47,8 +54,30 @@
     --accent: #e39a73;
     --accent-soft: #3a271d;
     --focus: #e39a73;
+    --key-white: #161411;
+    --key-gap: #efe8dc;
+    --show-moon: none;
+    --show-sun: block;
     color-scheme: dark;
   }
+}
+
+:root[data-theme="dark"] {
+  --bg: #161411;
+  --bg-raised: #1f1c18;
+  --ink: #efe8dc;
+  --ink-2: #cbc2b4;
+  --muted: #a39a8c;
+  --rule: #34302a;
+  --rule-strong: #4a443b;
+  --accent: #e39a73;
+  --accent-soft: #3a271d;
+  --focus: #e39a73;
+  --key-white: #161411;
+  --key-gap: #efe8dc;
+  --show-moon: none;
+  --show-sun: block;
+  color-scheme: dark;
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -210,21 +239,23 @@ a:hover {
 .topics {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem 0;
+  gap: 0.5rem;
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: var(--step--1);
+  font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink-2);
 }
 
-.topics li:not(:last-child)::after {
-  content: "·";
-  margin-inline: 0.6em;
-  color: var(--rule-strong);
+/* Each topic is a pill outlined in the accent. */
+.topics li {
+  padding: 0.3em 0.85em;
+  line-height: 1.3;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
 }
 
 /* Arrow link — a quiet call to action */

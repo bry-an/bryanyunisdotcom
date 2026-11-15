@@ -9,7 +9,7 @@ export default function NotFound() {
         <h1 className={styles.pageTitle}>Page not found</h1>
         <p className={styles.pageLede}>
           That page doesn&rsquo;t exist. Try the <Link href="/">homepage</Link> or{" "}
-          <Link href="/projects/">all projects</Link>.
+          <Link href="/#featured-work">featured work</Link>.
         </p>
       </header>
     </div>

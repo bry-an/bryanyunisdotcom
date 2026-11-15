@@ -21,9 +21,6 @@ export function SiteFooter() {
               <Link href="/#featured-work">Featured work</Link>
             </li>
             <li>
-              <Link href="/projects/">All projects</Link>
-            </li>
-            <li>
               <Link href="/about/">About</Link>
             </li>
           </ul>

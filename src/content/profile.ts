@@ -19,9 +19,9 @@ export const site = {
  * `lead` is set softer; `key` carries the emphasis. Each pair reads as one sentence.
  */
 export const strengths: { lead: string; key: string }[] = [
-  { lead: "An instinct for", key: "untangling complexity." },
-  { lead: "A talent for", key: "seeing what's possible." },
-  { lead: "The ability to", key: "bring people together to make it happen." },
+  { lead: "An instinct", key: "for untangling complexity." },
+  { lead: "A talent", key: "for seeing what's possible." },
+  { lead: "The ability", key: "to bring people together to make it happen." },
 ];
 
 export const signatureLine =
@@ -29,10 +29,22 @@ export const signatureLine =
 
 /** Approach — the professional introduction after the hero lines, verbatim. **bold** marks emphasis. */
 export const introduction: string[] = [
-  "I'm a software engineer and technical leader with eight years of experience building systems that solve challenging business problems.",
+  "I'm a software engineer and technical leader with experience building systems that solve challenging business problems.",
   "My work sits at the intersection of software architecture, product engineering, and AI-driven development. I consider myself a **technical owner of product outcomes**. I specialize in understanding complex systems, identifying the problems worth solving, and delivering reliable solutions in environments where the cost of error is high.",
   "I use AI to extend the reach of engineering expertise: exploring edge cases, validating complex behavior, investigating production anomalies, and reasoning across architectural boundaries.",
   "I believe the most important opportunity in AI-driven development is enabling engineers to **understand** more, anticipate more, and deliver **better outcomes** with greater confidence.",
+];
+
+/**
+ * About — adapted from the LinkedIn About (linkedin/About.md), so it doesn't repeat
+ * the homepage Approach. Its opening line is the tagline (shown just above it) and
+ * its closing line is the signature (in the footer), so both are left out here.
+ */
+export const aboutIntroduction: string[] = [
+  "I’m a software engineer and technical lead working across architecture, product engineering, and AI-assisted development. At Gateless, I lead engineering work across a mortgage underwriting platform that spans customer-facing applications, distributed services, financial integrations, and an expert system with thousands of interconnected business rules.",
+  "I take ownership of product outcomes, from clarifying what we need to solve to verifying that the solution works under realistic conditions. That can mean finding gaps between a partner’s requirements and our data model, reproducing complex underwriting behavior before deployment, or using deterministic analysis to establish the full customer impact of a production incident.",
+  "My earlier work at RE/MAX and OppenheimerFunds shaped that approach. I led the development of a shared content-rendering service and helped turn a fragmented employee provisioning process into a single workflow that could be completed in minutes.",
+  "AI extends the reach of that engineering experience. It helps me trace unfamiliar systems, explore edge cases, and see how a decision in one part of a platform will affect another. I use that understanding to ask better questions, verify changes more thoroughly, and make better technical decisions.",
 ];
 
 /**
@@ -41,7 +53,7 @@ export const introduction: string[] = [
  */
 export const thesis = {
   contrast:
-    "Most discussions of AI coding focus on how much faster software can be produced. My work suggests something more consequential:",
+    "Most discussions of AI coding focus on how much faster software can be produced. It think it's more consequential:",
   claim:
     "AI can make systems that were previously too large, unfamiliar, or intricate for an individual engineer to reason about comprehensively much more accessible.",
   caveat:
@@ -53,7 +65,7 @@ export const closingInvite =
   "If you're building complex software where correctness matters, I'd like to hear about it.";
 
 export const historyIntro =
-  "I spent years developing the technical depth, architectural judgment, and engineering discipline that now make me effective with AI. AI has allowed me to leverage those capabilities to produce better products.";
+  "I spent years developing the technical depth, architectural judgment, and engineering discipline that now make me able to effectively leverage AI to ship better products.";
 
 export const foundationsHeading = "Engineering across the stack. Ownership across the lifecycle.";
 
@@ -74,7 +86,7 @@ export type Role = {
 export const roles: Role[] = [
   {
     id: "gateless",
-    step: "Architecting complex distributed systems, then leading teams and owning product outcomes",
+    step: "Architecting complex distributed systems, then leading engineers and owning product outcomes",
     company: "Gateless",
     title: "Engineering intelligent mortgage underwriting",
     labels: ["Full-stack engineering", "Distributed systems", "Expert systems"],
@@ -108,7 +120,7 @@ export const roles: Role[] = [
   {
     id: "oppenheimerfunds",
     step: "Implementing enterprise software",
-    company: "OppenheimerFunds (now Invesco)",
+    company: "Oppenheimer Funds (now Invesco)",
     title: "Transforming enterprise employee onboarding",
     labels: ["Enterprise integration", "Workflow automation"],
     brief:
@@ -127,3 +139,16 @@ export const roles: Role[] = [
 export const rolesChronological = () => [...roles].reverse();
 
 export const aboutHref = (id?: string) => (id ? `/about/#${id}` : "/about/");
+
+/** About — personal interests, after the career story. The last paragraph is the through-line. */
+export const moreAboutMe = {
+  heading: "A little more about me",
+  body: [
+    "When I'm not building software, you'll often find me out on a bike, at the piano, or immersed in reading about history, economics, or natural science.",
+    "I'm fascinated by the forces that shape societies. I've studied the emergence of working-class identity during the Industrial Revolution in England, and I'm particularly interested in how economic, political, and social forces converge to produce financial crises, from the Panic of 1873 and the crash of 1929 to the Great Financial Crisis of 2008. I also spent several years working for a member of Congress when I was younger, an experience that helped cultivate a lasting fascination with American political history.",
+    "I have a deep love of chemistry and biology, and lately I've been exploring the intersection of biology and artificial intelligence. One personal project brought these interests together: building an image classifier to recognize the erythema migrans rash associated with Lyme disease, and integrating it with a rules engine to help assess the likelihood of Lyme disease following a tick bite.",
+    "Music is another lifelong passion. I play the piano, love getting lost in a Brahms symphony, and enjoy pulling apart the structure of a piece of music to understand how its many elements come together into something extraordinary.",
+  ],
+  thread:
+    "If there's a common thread in all this, it's that I'm endlessly curious about how things work, how they interact, and how something awe-inspiring can emerge from their complexity.",
+};

@@ -93,37 +93,14 @@
   max-width: 60ch;
 }
 
-.summaryLg {
-  color: var(--ink-2);
-  max-width: 60ch;
-}
-
-/* Lead feature: text band, then its diagram inset beneath */
-.lead {
-  gap: clamp(1.75rem, 3.5vw, 2.5rem);
-}
-
-.leadText {
-  display: grid;
-  gap: 1.15rem;
-  align-content: start;
-  max-width: 52rem;
-}
-
-.inset {
-  max-width: 60rem;
-  margin-block: 0.5rem;
-}
-
-/* One title size for every case on the spine. */
-.leadTitle,
+/* One title size for every case, a step below its stage heading (.line). */
 .featureTitle,
 .compactTitle {
   font-family: var(--font-serif);
-  font-size: var(--step-3);
-  line-height: 1.05;
+  font-size: var(--step-2);
+  line-height: 1.1;
   letter-spacing: -0.01em;
-  max-width: 32ch;
+  max-width: 44ch;
 }
 
 
@@ -139,12 +116,6 @@
   max-width: 52rem;
 }
 
-/* The index keeps a quieter scale. */
-.isIndex .compactTitle {
-  font-size: var(--step-2);
-  line-height: 1.1;
-}
-
 .pull {
   margin: 0.5rem 0;
   padding-left: 1.25rem;
@@ -157,26 +128,4 @@
   font-size: var(--step-1);
   line-height: 1.3;
   max-width: 42ch;
-}
-
-/* ── Index variant: uniform scale, tighter rhythm ───────── */
-.isIndex .chapter {
-  padding-bottom: clamp(3rem, 6vw, 4.5rem);
-}
-
-.isIndex .chapter:last-child {
-  padding-bottom: 0;
-}
-
-.isIndex .line {
-  font-size: var(--step-2);
-}
-
-.indexItem {
-  gap: 0.8rem;
-  max-width: 52rem;
-}
-
-.subtitle {
-  font-weight: 500;
 }

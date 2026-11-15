@@ -8,17 +8,16 @@ import {
 } from "@/content/projects";
 import { Topics } from "./Topics";
 import { Ledger } from "./Ledger";
-import { IntegrationFigure } from "./IntegrationFigure";
 import styles from "./WorkSpine.module.css";
 
 /**
  * The evidence, told as one story: four stages of the engineering lifecycle on a
  * single rail, each node a little fuller than the last (implementation → understanding).
- * Featured work leads each stage at a larger scale; the rest follows in compact form.
+ * Every case shares one shape and one title size, a step below the stage headings.
  */
-export function WorkSpine({ variant = "home" }: { variant?: "home" | "index" }) {
+export function WorkSpine() {
   return (
-    <ol className={`${styles.spine} ${variant === "index" ? styles.isIndex : ""}`}>
+    <ol className={styles.spine}>
       {stages.map((stage, i) => (
         <li
           key={stage.id}
@@ -35,9 +34,9 @@ export function WorkSpine({ variant = "home" }: { variant?: "home" | "index" }) 
             <p className={styles.desc}><Inline text={stage.description} /></p>
           </header>
           <div className={styles.items}>
-            {projectsForStage(stage.id).map((p) =>
-              variant === "home" ? <HomeItem key={p.slug} project={p} /> : <IndexItem key={p.slug} project={p} />,
-            )}
+            {projectsForStage(stage.id).map((p) => (
+              <HomeItem key={p.slug} project={p} />
+            ))}
           </div>
         </li>
       ))}
@@ -68,23 +67,6 @@ function Title({ project, className }: { project: Project; className: string }) 
 function HomeItem({ project }: { project: Project }) {
   const p = project.placement;
 
-  if (p.kind === "featured" && p.role === "lead") {
-    return (
-      <article className={`${styles.item} ${styles.lead}`} aria-labelledby={`w-${project.slug}`}>
-        {/* Text first, as its own band… */}
-        <div className={styles.leadText}>
-          <Topics items={project.topics} />
-          <Title project={project} className={styles.leadTitle} />
-          <p className={styles.summaryLg}><Inline text={project.summary} /></p>
-          <Ledger project={project} />
-        </div>
-        {/* …then the graphic beneath it, as an inset. */}
-        <IntegrationFigure className={styles.inset} />
-        <ReadLink project={project} />
-      </article>
-    );
-  }
-
   if (p.kind === "featured") {
     return (
       <article className={`${styles.item} ${styles.feature}`} aria-labelledby={`w-${project.slug}`}>
@@ -109,18 +91,6 @@ function HomeItem({ project }: { project: Project }) {
       )}
       <Ledger project={project} />
       <ReadLink project={project} />
-    </article>
-  );
-}
-
-function IndexItem({ project }: { project: Project }) {
-  return (
-    <article className={`${styles.item} ${styles.indexItem}`} aria-labelledby={`w-${project.slug}`}>
-      <Title project={project} className={styles.compactTitle} />
-      <p className={styles.subtitle}><Inline text={project.subtitle} /></p>
-      <p className={styles.summary}><Inline text={project.summary} /></p>
-      <Ledger project={project} />
-      <Topics items={project.topics} />
     </article>
   );
 }

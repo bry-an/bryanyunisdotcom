@@ -3,9 +3,9 @@ import Image from "next/image";
 import {
   foundationsHeading,
   historyIntro,
-  introduction,
+  aboutIntroduction,
+  moreAboutMe,
   rolesChronological,
-  signatureLine,
   site,
 } from "@/content/profile";
 import { Topics } from "@/components/Topics";
@@ -13,13 +13,14 @@ import { projectHref, projectsInReadingOrder } from "@/content/projects";
 import Link from "next/link";
 import { Inline } from "@/lib/markdown";
 import { ContactForm } from "@/components/ContactForm";
+import { PianoKeys } from "@/components/PianoKeys";
 import headshot from "@/assets/headshot.jpg";
 import styles from "../pages.module.css";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Bryan Yunis: eight years building systems that solve challenging business problems, from enterprise integration at OppenheimerFunds and platform engineering at RE/MAX to distributed expert systems at Gateless.",
+    "Bryan Yunis builds systems that solve challenging business problems, from enterprise integration at OppenheimerFunds and platform engineering at RE/MAX to distributed expert systems at Gateless.",
   alternates: { canonical: "/about/" },
   openGraph: { url: "/about/" },
 };
@@ -34,7 +35,7 @@ export default function About() {
             <span className="serif"><Inline text={site.role} /></span> <Inline text={site.tagline} />
           </p>
           <div className="prose">
-            {introduction.map((p, i) => (
+            {aboutIntroduction.map((p, i) => (
               <p key={i}>
                 <Inline text={p} />
               </p>
@@ -96,9 +97,25 @@ export default function About() {
         ))}
       </section>
 
-      <blockquote className={styles.aboutSignature}>
-        <p><Inline text={signatureLine} /></p>
-      </blockquote>
+      <section id="more" className={`${styles.block} ${styles.personal}`} aria-labelledby="more-title">
+        <header>
+          <p className="eyebrow">Beyond the work</p>
+          <h2 id="more-title" className={styles.aboutSectionTitle}>
+            <Inline text={moreAboutMe.heading} />
+          </h2>
+          <PianoKeys className={styles.personalKeys} />
+        </header>
+        <div className="prose">
+          {moreAboutMe.body.map((p, i) => (
+            <p key={i}>
+              <Inline text={p} />
+            </p>
+          ))}
+          <p className={styles.personalThread}>
+            <Inline text={moreAboutMe.thread} />
+          </p>
+        </div>
+      </section>
 
       <section id="contact" className={styles.block} aria-labelledby="contact-title">
         <div className={styles.contact}>

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import styles from "./SiteHeader.module.css";
 
 const items = [
-  { href: "/projects/", label: "Work", match: "/projects" },
+  { href: "/#featured-work", label: "Work", match: "/projects" },
   { href: "/about/", label: "About", match: "/about" },
 ];
 

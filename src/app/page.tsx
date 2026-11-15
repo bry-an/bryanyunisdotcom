@@ -48,8 +48,8 @@ export default function Home() {
             <div>
               <dt>Experience</dt>
               <dd>
-                Eight years: full-stack engineer turned technical lead, across a platform built on
-                thousands of interconnected business rules
+                Full-stack engineer turned technical lead, across a platform built on thousands of
+                interconnected business rules
               </dd>
             </div>
             <div>

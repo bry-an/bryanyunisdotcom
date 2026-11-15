@@ -1,0 +1,57 @@
+.keys {
+  --white: var(--key-white);
+  --gap: var(--key-gap);
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  border: 1px solid var(--gap);
+  border-radius: 3px;
+  width: 100%;
+  max-width: 22rem;
+  height: 5.5rem;
+}
+
+.white {
+  flex: 1;
+  background: var(--white);
+}
+
+.white + .white {
+  border-left: 1px solid var(--gap);
+}
+
+.black {
+  position: absolute;
+  top: 0;
+  left: calc(var(--p) * 100%);
+  width: calc(100% / var(--n) * 0.58);
+  height: 60%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  border-radius: 0 0 2px 2px;
+}
+
+/* Vertical: keys stacked top to bottom, filling the parent's height. */
+@media (min-width: 56rem) {
+  .keys {
+    flex-direction: column;
+    width: 5.5rem;
+    max-width: none;
+    height: auto;
+    transform: rotate(180deg);
+  }
+
+  .white + .white {
+    border-left: 0;
+    border-top: 1px solid var(--gap);
+  }
+
+  .black {
+    top: calc(var(--p) * 100%);
+    left: 0;
+    width: 60%;
+    height: calc(100% / var(--n) * 0.58);
+    transform: translateY(-50%);
+    border-radius: 0 2px 2px 0;
+  }
+}
