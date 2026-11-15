@@ -15,6 +15,8 @@ import { Inline } from "@/lib/markdown";
 import { ContactForm } from "@/components/ContactForm";
 import { PianoKeys } from "@/components/PianoKeys";
 import headshot from "@/assets/headshot.jpg";
+import { JsonLd } from "@/components/JsonLd";
+import { abs, baseOpenGraph, ids, personLd, websiteLd } from "@/lib/seo";
 import styles from "../pages.module.css";
 
 export const metadata: Metadata = {
@@ -22,12 +24,26 @@ export const metadata: Metadata = {
   description:
     "Bryan Yunis builds systems that solve challenging business problems, from enterprise integration at OppenheimerFunds and platform engineering at RE/MAX to distributed expert systems at Gateless.",
   alternates: { canonical: "/about/" },
-  openGraph: { url: "/about/" },
+  openGraph: { ...baseOpenGraph, type: "profile", firstName: "Bryan", lastName: "Yunis", url: "/about/" },
 };
 
 export default function About() {
   return (
     <div className="wrap">
+      <JsonLd
+        graph={[
+          websiteLd,
+          personLd,
+          {
+            "@type": "ProfilePage",
+            "@id": abs("/about/#page"),
+            url: abs("/about/"),
+            name: `About ${site.name}`,
+            isPartOf: { "@id": ids.website },
+            mainEntity: { "@id": ids.person },
+          },
+        ]}
+      />
       <header className={styles.aboutHead}>
         <div className={styles.aboutIntro}>
           <h1 className={styles.pageTitle}>About</h1>

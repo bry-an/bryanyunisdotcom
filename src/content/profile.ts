@@ -53,7 +53,7 @@ export const aboutIntroduction: string[] = [
  */
 export const thesis = {
   contrast:
-    "Most discussions of AI coding focus on how much faster software can be produced. It think it's more consequential:",
+    "Most discussions of AI coding focus on how much faster software can be produced. I think it's more consequential:",
   claim:
     "AI can make systems that were previously too large, unfamiliar, or intricate for an individual engineer to reason about comprehensively much more accessible.",
   caveat:
@@ -147,7 +147,7 @@ export const moreAboutMe = {
     "When I'm not building software, you'll often find me out on a bike, at the piano, or immersed in reading about history, economics, or natural science.",
     "I'm fascinated by the forces that shape societies. I've studied the emergence of working-class identity during the Industrial Revolution in England, and I'm particularly interested in how economic, political, and social forces converge to produce financial crises, from the Panic of 1873 and the crash of 1929 to the Great Financial Crisis of 2008. I also spent several years working for a member of Congress when I was younger, an experience that helped cultivate a lasting fascination with American political history.",
     "I have a deep love of chemistry and biology, and lately I've been exploring the intersection of biology and artificial intelligence. One personal project brought these interests together: building an image classifier to recognize the erythema migrans rash associated with Lyme disease, and integrating it with a rules engine to help assess the likelihood of Lyme disease following a tick bite.",
-    "Music is another lifelong passion. I play the piano, love getting lost in a Brahms symphony, and enjoy pulling apart the structure of a piece of music to understand how its many elements come together into something extraordinary.",
+    "Music is another lifelong passion. I play the piano, love getting lost in a Brahms symphony, and enjoy pulling apart the structure of a piece of music to understand how its many elements come together to form something extraordinary.",
   ],
   thread:
     "If there's a common thread in all this, it's that I'm endlessly curious about how things work, how they interact, and how something awe-inspiring can emerge from their complexity.",

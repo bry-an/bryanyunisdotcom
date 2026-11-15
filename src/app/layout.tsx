@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { themeScript } from "@/lib/theme";
 import { site } from "@/content/profile";
 import { plain } from "@/lib/markdown";
+import { baseOpenGraph } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -30,12 +31,8 @@ export const metadata: Metadata = {
   description: plain(site.description),
   authors: [{ name: site.name, url: site.url }],
   alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    siteName: site.name,
-    url: "/",
-    locale: "en_US",
-  },
+  creator: site.name,
+  openGraph: { ...baseOpenGraph, type: "website", url: "/" },
   twitter: { card: "summary_large_image" },
 };
 

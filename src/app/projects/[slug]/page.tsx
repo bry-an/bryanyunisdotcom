@@ -10,11 +10,13 @@ import {
   projectsInReadingOrder,
   stageFor,
 } from "@/content/projects";
-import { Inline, Markdown, firstParagraph, plain } from "@/lib/markdown";
+import { Inline, Markdown, plain } from "@/lib/markdown";
 import { Topics } from "@/components/Topics";
 import { IntegrationFigure } from "@/components/IntegrationFigure";
 import { Ledger } from "@/components/Ledger";
 import { StageMap } from "@/components/StageMap";
+import { JsonLd } from "@/components/JsonLd";
+import { abs, baseOpenGraph, clip, ids, personLd, websiteLd } from "@/lib/seo";
 import styles from "../../pages.module.css";
 
 export function generateStaticParams() {
@@ -25,13 +27,22 @@ export async function generateMetadata({ params }: PageProps<"/projects/[slug]">
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  const description = firstParagraph(project.body);
+  // The summary states problem and outcome; the body's first paragraph is background.
+  const description = clip(project.summary);
   const title = plain(project.title);
   return {
     title,
     description,
     alternates: { canonical: projectHref(project.slug) },
-    openGraph: { type: "article", url: projectHref(project.slug), title, description },
+    openGraph: {
+      ...baseOpenGraph,
+      type: "article",
+      url: projectHref(project.slug),
+      title,
+      description,
+      authors: [abs("/about/")],
+      tags: project.topics.map(plain),
+    },
   };
 }
 
@@ -67,8 +78,30 @@ async function CaseStudy({ params }: { params: Params }) {
   const next = nextProject(project.slug);
   const wraps = projectsInReadingOrder()[0].slug === next.slug;
 
+  const url = abs(projectHref(project.slug));
+
   return (
     <>
+      <JsonLd
+        graph={[
+          websiteLd,
+          personLd,
+          {
+            "@type": "Article",
+            "@id": `${url}#article`,
+            url,
+            mainEntityOfPage: url,
+            headline: plain(project.title),
+            alternativeHeadline: plain(project.subtitle),
+            description: plain(project.summary),
+            keywords: project.topics.map(plain).join(", "),
+            inLanguage: "en-US",
+            author: { "@id": ids.person },
+            publisher: { "@id": ids.person },
+            isPartOf: { "@id": ids.website },
+          },
+        ]}
+      />
       <header className={styles.caseHead}>
         <h1 className={styles.caseTitle}><Inline text={project.title} /></h1>
         <div className={styles.caseMeta}>

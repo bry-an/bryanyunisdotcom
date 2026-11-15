@@ -12,6 +12,8 @@ import {
   thesis,
 } from "@/content/profile";
 import { WorkSpine } from "@/components/WorkSpine";
+import { JsonLd } from "@/components/JsonLd";
+import { personLd, websiteLd } from "@/lib/seo";
 import { ScaleIcon, SparkleIcon } from "@/components/LedgerIcons";
 import styles from "./home.module.css";
 
@@ -25,6 +27,7 @@ export default function Home() {
 
   return (
     <>
+      <JsonLd graph={[websiteLd, personLd]} />
       {/* ── Identity ─────────────────────────────────────────── */}
       <section className={styles.hero} aria-labelledby="hero-title">
         <div className="wrap grid">
