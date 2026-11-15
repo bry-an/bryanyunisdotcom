@@ -32,7 +32,7 @@ export const signatureLine =
 /** Approach — the professional introduction after the hero lines, verbatim. **bold** marks emphasis. */
 export const introduction: string[] = [
   "I'm a software engineer and technical leader with experience building systems that solve challenging business problems.",
-  "My work sits at the intersection of software architecture, product engineering, and AI-driven development. I consider myself a **technical owner of product outcomes**. I specialize in understanding complex systems, identifying the problems worth solving, and delivering reliable solutions in environments where the cost of error is high.",
+  "My work sits at the intersection of software architecture and product engineering. I consider myself a **technical owner of product outcomes**. I specialize in understanding complex systems, identifying the problems worth solving, and delivering reliable solutions in environments where the cost of error is high.",
   "I use AI to extend the reach of engineering expertise: exploring edge cases, validating complex behavior, investigating production anomalies, and reasoning across architectural boundaries.",
   "I believe the most important opportunity in AI-driven development is enabling engineers to **understand** more, anticipate more, and deliver **better outcomes** with greater confidence.",
 ];
@@ -43,7 +43,7 @@ export const introduction: string[] = [
  * its closing line is the signature (in the footer), so both are left out here.
  */
 export const aboutIntroduction: string[] = [
-  "I’m a software engineer and technical lead working across architecture, product engineering, and AI-assisted development. At [Gateless](https://gateless.com/), I lead engineering work across a mortgage underwriting platform that spans customer-facing applications, distributed services, financial integrations, and an expert system with thousands of interconnected business rules.",
+  "I’m a software engineer and technical lead working across architecture, product engineering, and AI-assisted development. At [Gateless](https://gateless.com/), I lead engineering work on a team on a mortgage underwriting platform that spans customer-facing applications, distributed services, financial integrations, and an expert system with thousands of interconnected business rules.",
   "I take ownership of product outcomes, from clarifying what we need to solve to verifying that the solution works under realistic conditions. That can mean finding gaps between a partner’s requirements and our data model, reproducing complex underwriting behavior before deployment, or using deterministic analysis to establish the full customer impact of a production incident.",
   "My earlier work at RE/MAX and OppenheimerFunds shaped that approach. I led the development of a shared content-rendering service and helped turn a fragmented employee provisioning process into a single workflow that could be completed in minutes.",
   "AI extends the reach of that engineering experience. It helps me trace unfamiliar systems, explore edge cases, and see how a decision in one part of a platform will affect another. I use that understanding to ask better questions, verify changes more thoroughly, and make better technical decisions.",
