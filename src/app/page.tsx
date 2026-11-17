@@ -39,6 +39,18 @@ export default function Home() {
           <div className={styles.heroLead}>
             <p className={styles.role}><Inline text={site.role} /></p>
             <p className={styles.tagline}><Inline text={site.tagline} /></p>
+            <ul className={styles.strengthList} aria-label="Strengths">
+              {strengths.map((s) => (
+                <li key={s.key}>
+                  <span className={styles.strengthLead}>
+                    <Inline text={s.lead} />
+                  </span>{" "}
+                  <span className={styles.strengthKey}>
+                    <Inline text={s.key} />
+                  </span>
+                </li>
+              ))}
+            </ul>
             <p className={styles.heroAction}>
               <a href="#featured-work" className={styles.primary}>
                 Explore featured work
@@ -65,24 +77,6 @@ export default function Home() {
               <dd>Software architecture · Product engineering · AI-driven development</dd>
             </div>
           </dl>
-        </div>
-      </section>
-
-      {/* Three strengths: systems, vision, leadership. */}
-      <section className={styles.strengths} aria-label="Strengths">
-        <div className="wrap">
-          <ul className={styles.strengthList}>
-            {strengths.map((s) => (
-              <li key={s.key} className={styles.strength}>
-                <span className={styles.strengthLead}>
-                  <Inline text={s.lead} />
-                </span>{" "}
-                <span className={styles.strengthKey}>
-                  <Inline text={s.key} />
-                </span>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
